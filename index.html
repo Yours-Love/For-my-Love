@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Fame 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            animation: fadeIn 1s ease-out;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #ff4757;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            font-weight: 800;
+        }
+
+        .gif-container {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3);
+            border: 4px solid white;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            position: relative;
+            width: 100%;
+            justify-content: center;
+            min-height: 50px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+
+        #yes-btn {
+            background: linear-gradient(135deg, #2ed573, #7bed9f);
+        }
+
+        #yes-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 213, 115, 0.4);
+        }
+
+        #no-btn {
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            position: relative;
+        }
+
+        /* Floating hearts background animation */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(255, 71, 87, 0.3);
+            animation: float 6s ease-in infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .persistent-text {
+            color: #ff4757;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 25px 15px;
+            }
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            button {
+                width: 100%;
+                max-width: 250px;
+            }
+            .persistent-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="heart" style="left: 10%; animation-delay: 0s;">💖</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">💕</div>
+    <div class="heart" style="left: 50%; animation-delay: 4s;">💖</div>
+    <div class="heart" style="left: 70%; animation-delay: 1s;">💕</div>
+    <div class="heart" style="left: 90%; animation-delay: 3s;">💖</div>
+
+    <div class="card">
+        <h1>Fame, would you like to share the rest of your life with me? 💕</h1>
+
+        <div class="gif-container">
+            <img src="./lovely_bear.png" alt="Lovely pleading bear"
+                width="200" style="display: block; border-radius: 10px;">
+        </div>
+
+        <p class="persistent-text">(Remember that I won't give up on you and our relationship easily! 😉)</p>
+        <div class="buttons">
+            <button id="yes-btn" onclick="window.location.href='yes.html'">Yes!</button>
+            <button id="no-btn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const buttonsContainer = document.querySelector('.buttons');
+
+        function moveNoButton(e) {
+            if (e.type === 'touchstart') {
+                e.preventDefault();
+            }
+
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
+
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+
+            noBtn.style.position = 'fixed';
+
+            const padding = 20;
+            const randomX = padding + Math.random() * (containerWidth - btnWidth - padding * 2);
+            const randomY = padding + Math.random() * (containerHeight - btnHeight - padding * 2);
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.transition = 'all 0.3s ease';
+        }
+
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('touchstart', moveNoButton);
+    </script>
+</body>
+
+</html>
